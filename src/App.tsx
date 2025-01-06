@@ -1,6 +1,7 @@
 import './App.css';
-import UsersDataTable from './assets/table/UsersDataTable';
+
 import ReactQueryProvider from './ReactQueryProvider';
+import UsersDataTable from './UsersDataTable';
 
 function App() {
   return (
