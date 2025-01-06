@@ -1,4 +1,5 @@
-import { memo, useMemo } from 'react';
+import { memo, useMemo, useState } from 'react';
+import TopToolbar from './components/table/data-table/components/TopToolbar';
 import PaginatedDataTable from './components/table/data-table/PaginatedDataTable';
 import { FetchFunction } from './components/table/data-table/types';
 import { User } from './components/table/types';
@@ -17,6 +18,8 @@ const fetchUsers: FetchFunction<User> = async (page: number, pageSize: number) =
 };
 
 const UsersDataTable = () => {
+  const [rowSelection, setRowSelection] = useState({});
+
   const queryOptions = useMemo(
     () => ({
       queryKey: ['users'],
@@ -27,7 +30,29 @@ const UsersDataTable = () => {
 
   console.log('queryOptions ===>', queryOptions);
 
-  return <PaginatedDataTable useQueryOptions={queryOptions} />;
+  return (
+    <PaginatedDataTable
+      rowSelection={rowSelection}
+      onRowSelectionChange={setRowSelection}
+      useQueryOptions={queryOptions}
+      renderBottomLeftToolbarCustomActions={() => {
+        return <div>renderBottomLeftToolbarCustomActions</div>;
+      }}
+      renderTopToolbar={({ table }) => {
+        return (
+          <TopToolbar table={table} selectedRows={Object.keys(rowSelection).length} totalRows={table.getRowCount()}>
+            <input type="date" />
+            <input type="date" />
+            <select>
+              <option>hello</option>
+            </select>
+            <input type="text" />
+            <button>조회</button>
+          </TopToolbar>
+        );
+      }}
+    />
+  );
 };
 
 export default memo(UsersDataTable);

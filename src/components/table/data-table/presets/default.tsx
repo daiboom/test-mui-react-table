@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { type MRT_RowData, type MRT_TableOptions } from 'material-react-table';
 
 export const presetMap = {
@@ -10,7 +9,7 @@ export const presetMap = {
       size: 160,
     },
     paginationDisplayMode: 'default',
-    // enableRowNumbers: true,
+    enableRowNumbers: true,
     rowNumberDisplayMode: 'static',
     enableColumnResizing: true,
     columnResizeMode: 'onChange',
@@ -48,16 +47,17 @@ export const presetMap = {
         },
       },
     },
-    renderToolbarInternalActions: () => <></>,
-    renderTopToolbarCustomActions: ({ table }) => (
-      <Button
-        variant="contained"
-        onClick={() => {
-          table.setCreatingRow(true);
-        }}
-      >
-        Create New User
-      </Button>
-    ),
+
+    // renderToolbarInternalActions: () => <></>,
+    // renderTopToolbarCustomActions: ({ table }) => (
+    //   <Button
+    //     variant="contained"
+    //     onClick={() => {
+    //       table.setCreatingRow(true);
+    //     }}
+    //   >
+    //     Create New User
+    //   </Button>
+    // ),
   }),
 };

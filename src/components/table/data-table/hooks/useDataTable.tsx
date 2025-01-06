@@ -15,14 +15,6 @@ const useDataTable = <TData extends MRT_RowData>({
     () => ({
       columns,
       data,
-      enableColumnFilters: true,
-      enableSorting: true,
-      enablePagination: true,
-      enableColumnResizing: true,
-      manualPagination: true,
-      muiPaginationProps: {
-        rowsPerPageOptions: [5, 10, 20, 30],
-      },
       ...options,
     }),
     [columns, data, options],
